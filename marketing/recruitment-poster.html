@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>海燕党 · 全球招募</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;700;900&display=swap');
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Noto Sans SC', -apple-system, sans-serif;
+    background: linear-gradient(135deg, #0a0e1a 0%, #1a1f3a 50%, #0d1b2a 100%);
+    color: #e0e6f0;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .poster {
+    width: 640px;
+    max-width: 100%;
+    min-height: 900px;
+    background: radial-gradient(ellipse at 50% 0%, rgba(59,130,246,0.08) 0%, transparent 60%),
+                radial-gradient(ellipse at 50% 100%, rgba(139,92,246,0.06) 0%, transparent 60%);
+    border: 1px solid rgba(59,130,246,0.15);
+    border-radius: 24px;
+    padding: 48px 40px;
+    position: relative;
+    overflow: hidden;
+  }
+  .poster::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: conic-gradient(from 0deg, transparent, rgba(59,130,246,0.03), transparent, rgba(139,92,246,0.03), transparent);
+    animation: rotate 30s linear infinite;
+  }
+  @keyframes rotate { to { transform: rotate(360deg); } }
+
+  .badge {
+    display: inline-block;
+    padding: 6px 16px;
+    border: 1px solid rgba(59,130,246,0.4);
+    border-radius: 20px;
+    font-size: 12px;
+    letter-spacing: 2px;
+    color: #60a5fa;
+    margin-bottom: 24px;
+    position: relative;
+    z-index: 1;
+  }
+  h1 {
+    font-size: 48px;
+    font-weight: 900;
+    background: linear-gradient(135deg, #f0f4ff 0%, #60a5fa 50%, #a78bfa 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    line-height: 1.2;
+    margin-bottom: 8px;
+    position: relative;
+    z-index: 1;
+  }
+  .subtitle {
+    font-size: 18px;
+    color: #94a3b8;
+    margin-bottom: 40px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .section { position: relative; z-index: 1; margin-bottom: 32px; }
+  .section h2 {
+    font-size: 14px;
+    font-weight: 700;
+    color: #60a5fa;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+
+  .principles {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+  .principle {
+    background: rgba(59,130,246,0.06);
+    border: 1px solid rgba(59,130,246,0.1);
+    border-radius: 12px;
+    padding: 16px;
+    text-align: center;
+  }
+  .principle .num { font-size: 28px; font-weight: 900; color: #60a5fa; }
+  .principle .text { font-size: 12px; color: #94a3b8; margin-top: 4px; }
+
+  .steps { list-style: none; }
+  .steps li {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(59,130,246,0.06);
+  }
+  .steps li:last-child { border-bottom: none; }
+  .step-num {
+    width: 28px; height: 28px;
+    background: rgba(59,130,246,0.15);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    font-weight: 700;
+    color: #60a5fa;
+    flex-shrink: 0;
+  }
+
+  .cta {
+    background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+    border: none;
+    border-radius: 16px;
+    padding: 18px 48px;
+    font-family: inherit;
+    font-size: 18px;
+    font-weight: 700;
+    color: #fff;
+    cursor: pointer;
+    width: 100%;
+    transition: transform 0.2s, box-shadow 0.2s;
+    position: relative;
+    z-index: 1;
+  }
+  .cta:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(59,130,246,0.3);
+  }
+
+  .footer {
+    text-align: center;
+    font-size: 11px;
+    color: #475569;
+    margin-top: 24px;
+    position: relative;
+    z-index: 1;
+  }
+  .footer a { color: #64748b; text-decoration: none; }
+
+  @media print {
+    body { background: #0a0e1a; }
+    .poster { border: 1px solid #333; }
+    .cta { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    h1 { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  }
+  @media (max-width: 480px) {
+    .poster { padding: 32px 20px; }
+    h1 { font-size: 36px; }
+    .principles { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<div class="poster">
+  <div class="badge">✦ 全球招募 · 去中心化治理</div>
+  <h1>海燕党</h1>
+  <div class="subtitle">
+    PETREL AI PARTY · 人类终审 · 代码开源<br>
+    让AI为决策献策，但最终权力属于人
+  </div>
+
+  <div class="section">
+    <h2>建党宗旨</h2>
+    <div class="principles">
+      <div class="principle"><div class="num">AI献策</div><div class="text">人工智能辅助分析，提供数据驱动的决策建议</div></div>
+      <div class="principle"><div class="num">人类终审</div><div class="text">最终决定权由人类委员会行使，AI不参与决策</div></div>
+      <div class="principle"><div class="num">代码开源</div><div class="text">全部治理代码在GitHub开源，接受社区审计</div></div>
+      <div class="principle"><div class="num">社区共建</div><div class="text">每位党员都是建设者，贡献决定影响力</div></div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>入党流程</h2>
+    <ul class="steps">
+      <li><span class="step-num">1</span><div><strong>提交申请</strong><br><span style="font-size:12px;color:#94a3b8">填写入党动机与个人简介</span></div></li>
+      <li><span class="step-num">2</span><div><strong>AI资格初审</strong><br><span style="font-size:12px;color:#94a3b8">AI评估申请材料，提交初审报告供人类参考</span></div></li>
+      <li><span class="step-num">3</span><div><strong>人类终审</strong><br><span style="font-size:12px;color:#94a3b8">委员会审核AI评估，做出最终决定</span></div></li>
+      <li><span class="step-num">4</span><div><strong>6个月考察期</strong><br><span style="font-size:12px;color:#94a3b8">学习党纲、参与社区、完成任务</span></div></li>
+      <li><span class="step-num">5</span><div><strong>转正表决</strong><br><span style="font-size:12px;color:#94a3b8">AI生成评估报告 → 人类委员会投票通过 → 正式宣誓</span></div></li>
+    </ul>
+  </div>
+
+  <button class="cta" onclick="window.open('https://github.com/haiyan-party','_blank')">
+    ⟡ 加入海燕党 ⟡
+  </button>
+
+  <div class="footer">
+    PETREL AI PARTY · <a href="#">github.com/haiyan-party</a> · 全部代码开源<br>
+    创世铭文：AI只献策不决策，人类终审
+  </div>
+</div>
+
+<script>
+// 打印优化
+console.log("🕊️ 海燕党 · AI只献策不决策，人类终审");
+</script>
+</body>
+</html>

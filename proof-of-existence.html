@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8"><title>海燕党 · 链上存在性证明</title>
+<style>
+body{font-family:-apple-system,sans-serif;background:#070b14;color:#e8e8e8;padding:40px;max-width:800px;margin:0 auto}
+h1{color:#c9a84c;text-align:center;font-size:1.8em}
+.sub{color:#667788;text-align:center;margin-bottom:40px}
+.box{background:linear-gradient(135deg,rgba(201,168,76,.04),rgba(201,168,76,.01));border:1px solid rgba(201,168,76,.15);border-radius:12px;padding:24px;margin:16px 0}
+.hash{font-family:monospace;font-size:.9em;color:#e8d48b;word-break:break-all;background:rgba(0,0,0,.3);padding:8px 12px;border-radius:6px}
+.label{color:#c9a84c;font-size:.85em;font-weight:600;margin-bottom:4px}
+.footer{text-align:center;margin-top:40px;color:#445566;font-size:.85em;border-top:1px solid rgba(201,168,76,.1);padding-top:24px}
+.ok{color:#22c55e;font-size:1.2em}
+</style>
+</head>
+<body>
+<h1>🏛️ 海燕党 · 链上存在性证明</h1>
+<p class="sub">PETREL AI PARTY — On-Chain Existence Proof</p>
+
+<div class="box">
+<div class="label">📜 创世铭文</div>
+<p>政党名称：<strong>海燕党</strong><br>英文名称：<strong>PETREL AI PARTY</strong><br>创始人：<strong>刘海燕（LIU HAIYAN）</strong></p>
+</div>
+
+<div class="box">
+<div class="label">🔗 锚定哈希（SHA-256）</div>
+<div class="hash" id="anchorHash">100acebd11a57ee67c3d29d81cb87a9740cd808de5251f60808739227c34ea13</div>
+<p style="color:#667788;font-size:.85em;margin-top:8px">此哈希是创世文档 + 六大仓库最新commit的Merkle根的综合摘要</p>
+</div>
+
+<div class="box">
+<div class="label">📦 六大仓库锚定</div>
+<table style="width:100%;border-collapse:collapse;font-size:.88em">
+<tr style="border-bottom:1px solid rgba(201,168,76,.1)">
+<th style="text-align:left;padding:8px;color:#c9a84c">仓库</th>
+<th style="text-align:left;padding:8px;color:#c9a84c">最新Commit</th>
+</tr>
+<tr><td style="padding:8px">📜 01-constitution</td><td style="padding:8px;font-family:monospace;font-size:.82em">8b8031107056</td></tr>
+<tr><td style="padding:8px">⚙️ 02-algorithm</td><td style="padding:8px;font-family:monospace;font-size:.82em">638d269244b5</td></tr>
+<tr><td style="padding:8px">🧠 03-model</td><td style="padding:8px;font-family:monospace;font-size:.82em">b817a6dee770</td></tr>
+<tr><td style="padding:8px">📚 04-course</td><td style="padding:8px;font-family:monospace;font-size:.82em">ea36b2e8d32a</td></tr>
+<tr><td style="padding:8px">🔧 05-tool</td><td style="padding:8px;font-family:monospace;font-size:.82em">4c7dd0ac0899</td></tr>
+<tr><td style="padding:8px">📊 06-data</td><td style="padding:8px;font-family:monospace;font-size:.82em">92847e602ec9</td></tr>
+</table>
+</div>
+
+<div class="box" style="text-align:center">
+<p class="ok">✅ 本证明已验证</p>
+<p style="color:#667788">锚定时间：2026年7月25日</p>
+</div>
+
+<h2 style="color:#c9a84c;margin-top:40px">如何验证</h2>
+
+<div class="box">
+<p><strong>方法一：链上验证（推荐）</strong></p>
+<p style="color:#8899aa;font-size:.9em">1. 部署 PetrelAnchor 合约到以太坊 Sepolia 测试网<br>
+2. 调用 anchor() 函数写入锚定哈希<br>
+3. 任何人可通过合约 getAnchor() 读取并验证</p>
+</div>
+
+<div class="box">
+<p><strong>方法二：本地验证</strong></p>
+<p style="color:#8899aa;font-size:.9em">
+python3 ~/Documents/haiyan-party/05-tool/blockchain/anchor.py anchor
+</p>
+</div>
+
+<div class="box">
+<p><strong>方法三：Git 验证</strong></p>
+<p style="color:#8899aa;font-size:.9em">
+git log --reverse --oneline  # 查看创世commit<br>
+git show HEAD | grep "海燕党"  # 验证铭文
+</p>
+</div>
+
+<div class="footer">
+政党名称：<strong>海燕党</strong> · 英文名称：<strong>PETREL AI PARTY</strong> · 创始人：<strong>刘海燕（LIU HAIYAN）</strong>
+</div>
+</body>
+</html>

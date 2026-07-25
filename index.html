@@ -1,224 +1,326 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>海燕党 · PETREL AI PARTY — 去中心化人机协同治理协议</title>
-    <style>
-        :root {
-            --deep-blue: #0a1628;
-            --navy: #0f1d36;
-            --gold: #c9a84c;
-            --gold-light: #e8d48b;
-            --white: #e8e8e8;
-            --accent: #3b82f6;
-        }
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", sans-serif;
-            background: var(--deep-blue);
-            color: var(--white);
-            line-height: 1.8;
-        }
-        .container { max-width: 960px; margin: 0 auto; padding: 0 24px; }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>海燕党 · PETREL AI PARTY — 去中心化人机协同治理开源协议</title>
+<style>
+/* ── 全局 ── */
+:root{--blue:#0a1628;--navy:#0f1d36;--gold:#c9a84c;--gold-l:#e8d48b;--text:#e8e8e8;--muted:#667788;--accent:#3b82f6}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;background:var(--blue);color:var(--text);line-height:1.8;min-height:100vh}
+.container{max-width:1000px;margin:0 auto;padding:0 24px}
+a{color:var(--gold);text-decoration:none}
+a:hover{color:var(--gold-l)}
 
-        /* Hero */
-        .hero {
-            padding: 120px 0 80px;
-            text-align: center;
-            background: linear-gradient(180deg, var(--deep-blue) 0%, var(--navy) 100%);
-            border-bottom: 1px solid rgba(201, 168, 76, 0.2);
-        }
-        .hero h1 {
-            font-size: 3em;
-            font-weight: 700;
-            margin-bottom: 8px;
-            background: linear-gradient(135deg, var(--gold), var(--gold-light));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        .hero .subtitle {
-            font-size: 1.2em;
-            color: var(--gold);
-            margin-bottom: 16px;
-            letter-spacing: 4px;
-        }
-        .hero .mission {
-            max-width: 640px;
-            margin: 24px auto;
-            color: #8899aa;
-            font-size: 1.05em;
-        }
-        .hero .genesis {
-            margin-top: 40px;
-            padding: 20px;
-            background: rgba(201, 168, 76, 0.08);
-            border: 1px solid rgba(201, 168, 76, 0.2);
-            border-radius: 8px;
-            display: inline-block;
-        }
-        .hero .genesis small {
-            display: block;
-            color: #667788;
-            font-size: 0.8em;
-            margin-top: 8px;
-        }
+/* ── 导航 ── */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(10,22,40,.92);backdrop-filter:blur(12px);border-bottom:1px solid rgba(201,168,76,.15)}
+nav .container{display:flex;align-items:center;padding:0 24px;height:56px}
+nav .logo{font-weight:700;font-size:1.1em;color:var(--gold);white-space:nowrap}
+nav .logo small{font-weight:400;font-size:.75em;color:var(--muted);margin-left:8px}
+nav .links{margin-left:auto;display:flex;gap:4px}
+nav .links a{padding:8px 14px;border-radius:6px;font-size:.9em;color:var(--text);transition:.2s}
+nav .links a:hover{background:rgba(201,168,76,.12);color:var(--gold)}
+nav .links a.active{color:var(--gold);border-bottom:2px solid var(--gold)}
+@media(max-width:640px){nav .links a{padding:6px 8px;font-size:.8em}}
 
-        /* Sections */
-        section { padding: 80px 0; }
-        section h2 {
-            font-size: 1.8em;
-            color: var(--gold);
-            margin-bottom: 32px;
-            text-align: center;
-        }
-        .principles { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
-        .principle-card {
-            padding: 32px;
-            background: var(--navy);
-            border-radius: 12px;
-            border: 1px solid rgba(201, 168, 76, 0.1);
-        }
-        .principle-card h3 { color: var(--gold); margin-bottom: 12px; }
-        .principle-card p { color: #8899aa; }
+/* ── 页面 ── */
+.page{display:none;padding-top:80px;padding-bottom:60px}
+.page.active{display:block}
+h1{font-size:2.4em;color:var(--gold);margin-bottom:24px;text-align:center}
+h2{font-size:1.6em;color:var(--gold);margin:40px 0 20px;text-align:center}
+h3{font-size:1.2em;color:var(--gold-l);margin:24px 0 12px}
+p{color:#99aabb;margin-bottom:16px;max-width:720px}
+.inscription{background:rgba(201,168,76,.06);border:1px solid rgba(201,168,76,.15);border-radius:8px;padding:16px;margin:16px 0;font-size:.9em;text-align:center;color:var(--muted)}
 
-        /* Architecture */
-        .arch-stack {
-            text-align: center;
-            margin: 32px 0;
-        }
-        .arch-layer {
-            padding: 20px;
-            margin: 8px 0;
-            border-radius: 8px;
-            border: 1px solid rgba(201, 168, 76, 0.15);
-        }
-        .arch-layer.l3 { background: rgba(59, 130, 246, 0.1); }
-        .arch-layer.l2 { background: rgba(59, 130, 246, 0.08); }
-        .arch-layer.l1 { background: rgba(59, 130, 246, 0.06); }
-        .arch-layer.l0 { background: rgba(59, 130, 246, 0.04); }
-        .arch-layer.foundation {
-            background: rgba(201, 168, 76, 0.1);
-            border-color: var(--gold);
-        }
+/* ── Hero ── */
+.hero{text-align:center;padding:60px 0 40px}
+.hero h1{font-size:3.2em;margin-bottom:8px;background:linear-gradient(135deg,var(--gold),var(--gold-l));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hero .sub{color:var(--gold);letter-spacing:4px;font-size:1.1em;margin-bottom:16px}
+.hero .mission{max-width:650px;margin:24px auto;color:#99aabb;font-size:1.05em}
 
-        /* Footer */
-        footer {
-            padding: 40px 0;
-            text-align: center;
-            border-top: 1px solid rgba(201, 168, 76, 0.1);
-            color: #556677;
-            font-size: 0.9em;
-        }
-        footer .inscription {
-            margin-top: 16px;
-            font-size: 0.85em;
-            color: #667788;
-        }
+/* ── 卡片网格 ── */
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.grid3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px}
+@media(max-width:640px){.grid2,.grid3{grid-template-columns:1fr}}
+.card{background:var(--navy);border:1px solid rgba(201,168,76,.1);border-radius:12px;padding:24px;transition:.25s}
+.card:hover{border-color:rgba(201,168,76,.35);transform:translateY(-2px)}
+.card h3{color:var(--gold);margin:0 0 8px 0;font-size:1.05em}
+.card p{color:#8899aa;font-size:.9em;margin:0}
+.card .tag{display:inline-block;padding:2px 10px;border-radius:10px;font-size:.75em;margin-bottom:8px}
+.tag-p0{background:rgba(239,68,68,.15);color:#ef4444}
+.tag-p1{background:rgba(249,115,22,.15);color:#f97316}
+.tag-p2{background:rgba(59,130,246,.15);color:#3b82f6}
+.tag-p3{background:rgba(34,197,94,.15);color:#22c55e}
+.tag-p4{background:rgba(168,85,247,.15);color:#a855f7}
+.tag-p5{background:rgba(236,72,153,.15);color:#ec4899}
 
-        @media (max-width: 640px) {
-            .hero h1 { font-size: 2em; }
-            .principles { grid-template-columns: 1fr; }
-        }
-    </style>
+/* ── Arch Stack ── */
+.arch{text-align:center}
+.arch-layer{padding:18px;margin:6px 0;border-radius:8px;border:1px solid rgba(201,168,76,.12)}
+.arch-l3{background:rgba(59,130,246,.08)}
+.arch-l2{background:rgba(59,130,246,.06)}
+.arch-l1{background:rgba(59,130,246,.04)}
+.arch-l0{background:rgba(59,130,246,.025)}
+.arch-base{background:rgba(201,168,76,.08);border-color:var(--gold)}
+
+/* ── 里程碑时间线 ── */
+.timeline{position:relative;padding-left:32px}
+.timeline::before{content:'';position:absolute;left:12px;top:0;bottom:0;width:2px;background:rgba(201,168,76,.2)}
+.milestone{position:relative;margin-bottom:24px;padding:16px 20px;background:var(--navy);border-radius:8px;border:1px solid rgba(201,168,76,.08)}
+.milestone::before{content:'';position:absolute;left:-24px;top:20px;width:12px;height:12px;border-radius:50%;background:var(--gold)}
+.milestone .label{font-size:.8em;color:var(--gold);font-weight:600}
+.milestone .title{font-size:1em;color:var(--text);margin:4px 0}
+.milestone .desc{font-size:.85em;color:#8899aa}
+
+/* ── Footer ── */
+footer{padding:32px 0;text-align:center;border-top:1px solid rgba(201,168,76,.1);color:var(--muted);font-size:.85em}
+footer .mark{margin-top:12px;font-size:.8em}
+
+/* ── 课程表 ── */
+.course-card{padding:20px;background:var(--navy);border-radius:10px;border:1px solid rgba(201,168,76,.1);margin-bottom:16px}
+.course-card h3{color:var(--gold);margin:0 0 4px 0}
+.course-card .meta{color:var(--muted);font-size:.85em;margin-bottom:8px}
+.course-card .chapters{color:#99aabb;font-size:.9em}
+.course-card .chapters span{display:inline-block;margin:2px 4px;padding:1px 8px;background:rgba(201,168,76,.08);border-radius:4px}
+
+/* ── 仓库卡片 ── */
+.repo-card{padding:20px;background:var(--navy);border-radius:10px;border:1px solid rgba(201,168,76,.1);margin-bottom:12px}
+.repo-card .name{font-size:1.1em;color:var(--gold);font-weight:600}
+.repo-card .path{font-size:.8em;color:var(--muted)}
+.repo-card .desc{font-size:.9em;color:#99aabb;margin-top:4px}
+
+@media(max-width:640px){.hero h1{font-size:2em} h1{font-size:1.8em}}
+</style>
 </head>
 <body>
-    <div class="hero">
-        <div class="container">
-            <p class="subtitle">PETREL AI PARTY</p>
-            <h1>海燕党</h1>
-            <p class="mission">
-                一套开源的"人机协同治理操作系统"——包含章程、AI模型、治理算法、社区工具、教育课程，全部代码与文档公开。<br>
-                <strong>这不是一个党，这是一套协议。组织会死亡，协议不会。</strong>
-            </p>
-            <div class="genesis">
-                🏛️ 政党名称：<strong>海燕党</strong><br>
-                🌐 英文名称：<strong>PETREL AI PARTY</strong><br>
-                👤 创始人：<strong>刘海燕（LIU HAIYAN）</strong><br>
-                <small>创世铭文 · 历史纪念碑，不是权力凭证</small>
-            </div>
-        </div>
-    </div>
 
-    <section>
-        <div class="container">
-            <h2>核心理念</h2>
-            <div class="principles">
-                <div class="principle-card">
-                    <h3>⚖️ 协议即制度</h3>
-                    <p>能写进代码的规则，绝不依赖人的自觉；能上链存证的行为，绝不依赖人的承诺。</p>
-                </div>
-                <div class="principle-card">
-                    <h3>🕵️ 匿名于个体，透明于系统</h3>
-                    <p>参与者个人身份匿名化，但算法、资金、决策过程100%公开可审计。</p>
-                </div>
-                <div class="principle-card">
-                    <h3>🌱 分叉即进化</h3>
-                    <p>允许任何人复制并修改协议创建本地版本，优秀分叉通过社区投票回流主协议。</p>
-                </div>
-                <div class="principle-card">
-                    <h3>🤝 人类终审</h3>
-                    <p>AI只献策、不决策；机器只辅助、不掌权；人类终局终审、终身负责。</p>
-                </div>
-            </div>
-        </div>
-    </section>
+<!-- ── 导航 ── -->
+<nav>
+<div class="container">
+<div class="logo">海燕党 <small>PETREL AI PARTY</small></div>
+<div class="links">
+<a href="#" data-page="home" class="active">首页</a>
+<a href="#" data-page="about">关于</a>
+<a href="#" data-page="roadmap">路线图</a>
+<a href="#" data-page="courses">课程</a>
+<a href="#" data-page="repos">仓库</a>
+<a href="#" data-page="community">社区</a>
+</div>
+</div>
+</nav>
 
-    <section>
-        <div class="container">
-            <h2>四层协议栈</h2>
-            <div class="arch-stack">
-                <div class="arch-layer l3">
-                    <strong>L3 行动层</strong><br>
-                    <small>各国依法注册的实体组织（政党/协会/基金会）</small>
-                </div>
-                <div class="arch-layer l2">
-                    <strong>L2 社区层</strong><br>
-                    <small>匿名节点社区（分布式治理 DAO）</small>
-                </div>
-                <div class="arch-layer l1">
-                    <strong>L1 网络层</strong><br>
-                    <small>P2P通信 + IPFS存储 + 区块链存证 + DZN推理</small>
-                </div>
-                <div class="arch-layer l0">
-                    <strong>L0 协议层</strong><br>
-                    <small>开源代码与制度文本（六大仓库全开源）</small>
-                </div>
-                <div class="arch-layer foundation">
-                    <strong>创世铭文基岩</strong><br>
-                    <small>海燕党 / PETREL AI PARTY / 创始人 刘海燕 — 六层冗余永久嵌入</small>
-                </div>
-            </div>
-        </div>
-    </section>
+<!-- ══════════ 首页 ══════════ -->
+<div id="page-home" class="page active">
+<div class="container">
+<div class="hero">
+<p class="sub">PETREL AI PARTY</p>
+<h1>海燕党</h1>
+<p class="mission">一套开源的"人机协同治理操作系统"——包含章程、AI模型、治理算法、社区工具、教育课程。<br><strong>这不是一个党，这是一套协议。组织会死亡，协议不会。</strong></p>
+<div class="inscription">
+🏛️ 政党名称：<strong>海燕党</strong> ｜ 🌐 英文名称：<strong>PETREL AI PARTY</strong> ｜ 👤 创始人：<strong>刘海燕（LIU HAIYAN）</strong><br>
+<small>创世铭文 · 历史纪念碑，不是权力凭证 · 六层冗余永久嵌入</small>
+</div>
+</div>
 
-    <section>
-        <div class="container" style="text-align:center;">
-            <h2>六大开源仓库</h2>
-            <p style="color:#8899aa; margin-bottom:24px;">
-                全部代码托管于 GitHub / GitLab / Gitee 三平台镜像 + IPFS 永久存储。<br>
-                即使所有现有参与者消失，任何后来者下载这些仓库即可完整重建整个体系。
-            </p>
-            <div class="principles">
-                <div class="principle-card">📜 章程仓库<br><small>党章 · 许可证 · 分叉协议</small></div>
-                <div class="principle-card">⚙️ 算法仓库<br><small>智能合约 · ZKP电路 · 共识引擎</small></div>
-                <div class="principle-card">🧠 模型仓库<br><small>治理模型 · 模型卡 · 评估报告</small></div>
-                <div class="principle-card">📚 课程仓库<br><small>政治进化史 · 人机协同治理</small></div>
-                <div class="principle-card">🔧 工具仓库<br><small>镜像同步 · IPFS锚定 · 节点部署</small></div>
-                <div class="principle-card">📊 数据仓库<br><small>公开数据集 · 审计日志 · 合规矩阵</small></div>
-            </div>
-        </div>
-    </section>
+<h2>核心理念</h2>
+<div class="grid2">
+<div class="card"><h3>⚖️ 协议即制度</h3><p>能写进代码的规则，绝不依赖人的自觉；能上链存证的行为，绝不依赖人的承诺。</p></div>
+<div class="card"><h3>🕵️ 匿名于个体，透明于系统</h3><p>身份匿名化（零知识证明），但算法、资金、决策过程100%公开可审计。</p></div>
+<div class="card"><h3>🌱 分叉即进化</h3><p>允许任何人复制并修改协议创建本地版本，优秀分叉通过社区投票回流主协议。</p></div>
+<div class="card"><h3>🤝 AI只献策，人类终审</h3><p>AI只献策、不决策；机器只辅助、不掌权；人类终局终审、终身负责。</p></div>
+</div>
 
-    <footer>
-        <div class="container">
-            <p>海燕党 · PETREL AI PARTY — 去中心化人机协同治理开源协议</p>
-            <p>全部代码开源 · 全部设计公开 · 全部里程碑可查</p>
-            <div class="inscription">
-                政党名称：<strong>海燕党</strong> ｜ 英文名称：<strong>PETREL AI PARTY</strong> ｜ 创始人：<strong>刘海燕（LIU HAIYAN）</strong><br>
-                本网站为海燕党开源协议网络的官方落地页。创世铭文永久嵌入全部产物的最底层。
-            </div>
-        </div>
-    </footer>
+<h2>四层协议栈</h2>
+<div class="arch">
+<div class="arch-layer arch-l3"><strong>L3 行动层</strong><br><small>各国依法注册的实体组织（政党/协会/基金会）——合规接口</small></div>
+<div class="arch-layer arch-l2"><strong>L2 社区层</strong><br><small>匿名节点社区（分布式治理DAO）——20-150人细胞分裂模型</small></div>
+<div class="arch-layer arch-l1"><strong>L1 网络层</strong><br><small>P2P通信 + IPFS存储 + 区块链存证 + DZN分布式AI推理</small></div>
+<div class="arch-layer arch-l0"><strong>L0 协议层</strong><br><small>开源代码与制度文本——六大仓库全开源，任何人可下载重建</small></div>
+<div class="arch-layer arch-base"><strong>创世铭文基岩</strong><br><small>海燕党 / PETREL AI PARTY / 创始人 刘海燕 — 六层冗余永久嵌入</small></div>
+</div>
+
+<h2>六大开源仓库</h2>
+<div class="grid3">
+<div class="card"><h3>📜 章程</h3><p>党章V2.0 · OpenGov License · 友好分叉协议 · 6条Policy-as-Code宪法规则</p></div>
+<div class="card"><h3>⚙️ 算法</h3><p>DID身份 · ZKP零知识证明 · 匿名投票 · Sybil三轨 · 透明金库 · 声誉经济</p></div>
+<div class="card"><h3>🧠 模型</h3><p>DZN分布式推理 · 政策模拟引擎 · 多模型共识 · 三级熔断</p></div>
+<div class="card"><h3>📚 课程</h3><p>政治组织进化史 · 人机协同治理导论 — 共16章</p></div>
+<div class="card"><h3>🔧 工具</h3><p>镜像同步 · IPFS锚定 · CI/CD · 一键部署 · 翻译众包 · 合规矩阵</p></div>
+<div class="card"><h3>📊 数据</h3><p>公开数据集 · 审计日志 · 195法域合规数据库</p></div>
+</div>
+</div>
+</div>
+
+<!-- ══════════ 关于 ══════════ -->
+<div id="page-about" class="page">
+<div class="container">
+<h1>关于海燕党</h1>
+<p>海燕党（PETREL AI PARTY）不是传统意义上的政党。它是一套开源的"人机协同治理操作系统"——包含章程、AI模型、治理算法、社区工具、教育课程，全部代码与文档公开。</p>
+
+<h2>为什么必须去中心化</h2>
+<div class="grid2">
+<div class="card"><h3>🔴 单点摧毁</h3><p>中心化方案：总部、服务器、核心团队任一被打击即瘫痪<br>协议方案：代码与数据全网分布式存证，无总部可摧毁</p></div>
+<div class="card"><h3>🟡 信任成本</h3><p>中心化：公众必须信任"运营AI中枢的人"<br>协议化：代码开源、算法可审计——"不要相信，去验证"</p></div>
+<div class="card"><h3>🟠 权力回潮</h3><p>中心化：掌握中枢即掌握全党，人治缺陷换壳回归<br>协议化：无中枢可掌握，权力在协议层被数学锁定</p></div>
+<div class="card"><h3>🟢 传播瓶颈</h3><p>中心化：组织扩张依赖招募，线性增长<br>协议化：协议可被任何人fork复制，指数增长</p></div>
+</div>
+
+<h2>设计哲学三原则</h2>
+<div class="grid3">
+<div class="card"><h3>① 协议即制度</h3><p>能写进代码的规则，绝不依赖人的自觉；能上链存证的行为，绝不依赖人的承诺。</p></div>
+<div class="card"><h3>② 匿名于个体<br>透明于系统</h3><p>参与者个人身份匿名化（零知识证明），但算法、资金、决策过程100%公开可审计。</p></div>
+<div class="card"><h3>③ 分叉即进化</h3><p>允许任何人复制并修改协议创建本地版本，优秀分叉通过社区投票回流主协议。</p></div>
+</div>
+
+<h2>三条不可逾越的红线</h2>
+<div class="grid3">
+<div class="card" style="border-color:#ef4444"><h3>🚫 不自主决策</h3><p>AI输出仅可为"建议"格式，协议拒绝接受任何"指令"格式。人类终审不可绕过。</p></div>
+<div class="card" style="border-color:#f97316"><h3>🚫 不自我修改</h3><p>模型更新必须经社区提案+多签(≥5/9)+七项强制测试。离线训练、在线推理。</p></div>
+<div class="card" style="border-color:#3b82f6"><h3>🚫 不绕过人类</h3><p>所有对外输出必须附带人类多签凭证，无凭证输出协议层自动拒绝广播。</p></div>
+</div>
+
+<h2>创世铭文</h2>
+<div class="inscription">
+<p><strong>政党名称：海燕党 &nbsp;|&nbsp; 英文名称：PETREL AI PARTY &nbsp;|&nbsp; 创始人：刘海燕（LIU HAIYAN）</strong></p>
+<p style="margin-top:8px;font-size:.9em">三项标识自创世之日起永久嵌入系统最底层。六层冗余：①创世commit ②链上时间戳 ③CI守门 ④协议握手校验 ⑤许可证锁定 ⑥产物水印。</p>
+</div>
+</div>
+</div>
+
+<!-- ══════════ 路线图 ══════════ -->
+<div id="page-roadmap" class="page">
+<div class="container">
+<h1>工程路线图</h1>
+<p>5个工程阶段 · 35个里程碑 · 关键路径：WS0→WS1→WS2→WS4→公开发布</p>
+
+<div class="timeline">
+
+<div class="milestone"><div class="label">Phase 0 奠基期 · 2026.08-10</div><div class="title">✅ 基础设施+核心团队+章程定稿</div><div class="desc">6大仓库创世commit · 三平台镜像同步 · IPFS锚定 · CI/CD安全基线 · 党章V2.0+OpenGov License · 课程品牌 · 创世铭文六层嵌入</div></div>
+
+<div class="milestone"><div class="label">Phase 1 身份期 · 2026.11-2027.01</div><div class="title">✅ 匿名社区MVP上线</div><div class="desc">DID身份内核 · ZKP零知识成员证明 · Sybil三轨验证 · 加密通信(Matrix/Nostr) · 匿名投票内核Alpha · 安全审计门禁</div></div>
+
+<div class="milestone"><div class="label">Phase 2 智能期 · 2027.02-04</div><div class="title">✅ DZN Alpha + 治理平台Beta</div><div class="desc">治理模型开源 · 分布式推理调度 · 多模型共识 · AI输出格式锁+熔断 · 辩论与慢治理 · 随机公民大会抽签 · 透明金库V1 · 一键部署包</div></div>
+
+<div class="milestone"><div class="label">Phase 3 发布期 · 2027.05-07</div><div class="title">✅ 六大仓库V1.0全球公开发布</div><div class="desc">RC冻结 · 灾难恢复演练 · 全平台公开发布 · 种子社区计划(100节点)</div></div>
+
+<div class="milestone"><div class="label">Phase 4 规模化 · 2027.08-2029.12</div><div class="title">✅ 千节点网络+多语言+L3合规</div><div class="desc">10语言翻译 · 声誉经济V2 · DZN千节点扩容 · 政策模拟引擎 · 社区分裂自动化 · 友好分叉工具链 · 195法域合规矩阵</div></div>
+
+<div class="milestone"><div class="label">Phase 5 成熟期 · 2030+</div><div class="title">✅ 协议第三代迭代+标准化</div><div class="desc">ZKP递归证明 · 透明政府工程栈 · IETF/W3C/ISO标准提案 · 工程组织去中心化过渡</div></div>
+
+</div>
+</div>
+</div>
+
+<!-- ══════════ 课程 ══════════ -->
+<div id="page-courses" class="page">
+<div class="container">
+<h1>课程体系</h1>
+<p>两门核心课程，帮助公众理解人机协同治理的理念与实践。</p>
+
+<h2>📜 政治组织进化史</h2>
+<div class="course-card">
+<h3>从部落到AI——人类政治的五次跃迁</h3>
+<div class="meta">8章 · 16学时</div>
+<div class="chapters">
+<span>第一章 总论</span> <span>第二章 原始社会</span> <span>第三章 奴隶社会</span>
+<span>第四章 封建社会</span> <span>第五章 资本主义</span> <span>第六章 社会主义</span>
+<span>第七章 数字时代</span> <span>第八章 AI与未来</span>
+</div>
+<p style="margin-top:8px;font-size:.9em">理解人类政治组织从原始部落到AI治理的进化逻辑，看清人治模式的结构性缺陷。</p>
+</div>
+
+<h2>🤖 人机协同治理导论</h2>
+<div class="course-card">
+<h3>让机器理性辅助人类智慧</h3>
+<div class="meta">8章 · 16学时</div>
+<div class="chapters">
+<span>第一章 为什么需要人机协同</span> <span>第二章 AI辅助决策</span>
+<span>第三章 伦理基石</span> <span>第四章 去中心化协议</span>
+<span>第五章 社区治理实践</span> <span>第六章 DZN网络</span>
+<span>第七章 从协议到行动</span> <span>第八章 未来展望</span>
+</div>
+<p style="margin-top:8px;font-size:.9em">掌握DID、ZKP、匿名投票、透明金库等核心技术概念，理解"AI只献策不决策"为什么是最高原则。</p>
+</div>
+
+<div class="inscription">
+所有课程开源在 <strong>04-course/</strong> 仓库 · 每个人都可以自由下载、学习、传播、改进
+</div>
+</div>
+</div>
+
+<!-- ══════════ 仓库 ══════════ -->
+<div id="page-repos" class="page">
+<div class="container">
+<h1>六大开源仓库</h1>
+<p>全部代码与文档托管于 GitHub/GitLab/Gitee 三平台镜像 + IPFS永久存储。</p>
+
+<div class="repo-card"><div class="name">📜 01-constitution · 章程仓库</div><div class="path">~/haiyan-party/01-constitution/</div><div class="desc">党章V2.0（去中心化版）、党员手册、OpenGov License v1.0（含第6条创世署名条款）、友好分叉协议、6条Policy-as-Code宪法级机器可执行规则。</div></div>
+
+<div class="repo-card"><div class="name">⚙️ 02-algorithm · 算法仓库</div><div class="path">~/haiyan-party/02-algorithm/</div><div class="desc">DID身份系统（密钥生成/社交恢复/WebAuthn）、ZKP零知识证明（Halo2风格电路）、匿名投票内核（4种表决类型/加密票箱/同态计票）、Sybil三轨验证（社交图谱/质押挑战/贡献证明）、辩论平台、时间锁、VRF随机抽签、透明金库（5/9多签）、加密通信（Matrix+Nostr）、声誉经济V2（八大类计量器/SBT灵魂绑定）。测试174项。</div></div>
+
+<div class="repo-card"><div class="name">🧠 03-model · 模型仓库</div><div class="path">~/haiyan-party/03-model/</div><div class="desc">DZN分布式推理调度层（libp2p节点发现/分片路由/千节点扩容）、多模型共识引擎（语义比对/分歧标注）、AI输出格式锁+三级熔断、志愿者推理节点（CPU/GPU自适应）、激励机制（防寡头）、政策模拟引擎V1（城市级数字孪生/多智能体仿真）。测试55项。</div></div>
+
+<div class="repo-card"><div class="name">📚 04-course · 课程仓库</div><div class="path">~/haiyan-party/04-course/</div><div class="desc">品牌系统（视觉规范/色彩/口号）、两门课程16章完整内容、官网落地页。</div></div>
+
+<div class="repo-card"><div class="name">🔧 05-tool · 工具仓库</div><div class="path">~/haiyan-party/05-tool/</div><div class="desc">三平台镜像同步守护进程、IPFS快照锚定流水线、CI/CD+创世铭文守卫、一键Docker部署包、翻译众包平台（10语言）、L3合规工具（195法域矩阵/实体注册/任务市场）、社区分裂向导、友好分叉工具链、治理黑客松平台、Phase 5规范（协议三代/透明政府/标准提案/去中心化过渡）。</div></div>
+
+<div class="repo-card"><div class="name">📊 06-data · 数据仓库</div><div class="path">~/haiyan-party/06-data/</div><div class="desc">公开数据集、审计报告、合规矩阵数据。</div></div>
+</div>
+</div>
+
+<!-- ══════════ 社区 ══════════ -->
+<div id="page-community" class="page">
+<div class="container">
+<h1>节点社区</h1>
+<p>全球网络由无数个自治"节点社区"组成，每个社区20-150人，达到150人即自动分裂。</p>
+
+<h2>社区规模模型</h2>
+<div class="grid2">
+<div class="card"><h3>🌱 启动期（20-50人）</h3><p>种子成员通过DID注册、ZKP验证人格。使用一键部署包30分钟建好社区。</p></div>
+<div class="card"><h3>🌿 成长期（50-150人）</h3><p>完整治理循环：提案→辩论→抽签→投票→执行。声誉系统驱动贡献。</p></div>
+<div class="card"><h3>🌳 分裂期（≥150人）</h3><p>自动触发分裂向导：生成两个继承全部上下文的新社区。细胞分裂模型。</p></div>
+<div class="card"><h3>🌍 联盟期</h3><p>多社区通过协议层交换信息、参与全球议题表决。L3实体组织注册。</p></div>
+</div>
+
+<h2>如何加入</h2>
+<div class="grid3">
+<div class="card"><h3>1️⃣ 生成身份</h3><p>运行 <code>python3 did.py create</code> 创建你的DID。完全本地生成，服务端零知识。</p></div>
+<div class="card"><h3>2️⃣ 加入社区</h3><p>用DID申请加入一个节点社区，通过ZKP证明自己是独特人类（Sybil抵抗）。</p></div>
+<div class="card"><h3>3️⃣ 参与治理</h3><p>提案、辩论、投票、贡献代码/课程/翻译——每种贡献都计量为链上声誉。</p></div>
+</div>
+
+<div class="inscription">
+全部开源 · 全部公开 · 全部里程碑公开看板<br>
+<small>开发过程本身就是传播</small>
+</div>
+</div>
+</div>
+
+<!-- ══════════ Footer ══════════ -->
+<footer>
+<div class="container">
+<p>海燕党 · PETREL AI PARTY — 去中心化人机协同治理开源协议</p>
+<p>全部代码开源 · 全部设计文档公开 · 全部里程碑可查</p>
+<div class="mark">
+政党名称：<strong>海燕党</strong> ｜ 英文名称：<strong>PETREL AI PARTY</strong> ｜ 创始人：<strong>刘海燕（LIU HAIYAN）</strong><br>
+创世铭文 · 历史纪念碑，不是权力凭证 · 六层冗余永久嵌入
+</div>
+</div>
+</footer>
+
+<script>
+// ── 客户端路由 ──
+document.querySelectorAll('nav a[data-page]').forEach(a=>{
+a.addEventListener('click',e=>{
+e.preventDefault()
+const page=a.dataset.page
+document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'))
+document.getElementById('page-'+page).classList.add('active')
+document.querySelectorAll('nav a').forEach(l=>l.classList.remove('active'))
+a.classList.add('active')
+window.scrollTo(0,0)
+})})
+</script>
 </body>
 </html>

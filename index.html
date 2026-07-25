@@ -262,6 +262,7 @@ footer .mark strong{color:var(--text-muted)}
 <div class="links">
 <a href="#" data-page="home" class="active">首页</a>
 <a href="#" data-page="about">关于</a>
+<a href="#" data-page="join" style="color:var(--gold);font-weight:600">加入</a>
 <a href="#" data-page="roadmap">路线图</a>
 <a href="#" data-page="courses">课程</a>
 <a href="#" data-page="repos">仓库</a>
@@ -441,6 +442,65 @@ footer .mark strong{color:var(--text-muted)}
 </div>
 </div>
 
+<!-- ════════════ 加入 ════════════ -->
+<div id="page-join" class="page">
+<div class="container">
+<h1>加入海燕党</h1>
+<p>海燕党不是传统政党，而是一套去中心化的人机协同治理开源协议。加入我们，成为全球首个开源治理社区的创始成员。</p>
+
+<h2>入党条件</h2>
+<div class="grid3">
+<div class="card"><h3>📋 认同理念</h3><p>认同人机协同治理核心理念——"AI只献策不决策、人类终局终审"。</p></div>
+<div class="card"><h3>🔐 创建DID</h3><p>生成你的去中心化身份（DID），完全本地化，服务端零知识。</p></div>
+<div class="card"><h3>🤝 接受考核</h3><p>接受AI量化考核+人类终审，通过6个月考察期转为正式成员。</p></div>
+</div>
+
+<h2>入党流程</h2>
+<div class="arch-stack" style="max-width:700px">
+<div class="arch-layer" style="background:rgba(201,168,76,.06)"><strong>① 提交申请</strong><small>在线填写入党申请表，AI智能初审资格</small></div>
+<div class="arch-layer" style="background:rgba(201,168,76,.04)"><strong>② 预备考察期（6个月）</strong><small>全周期量化考察：学习课程+完成任务+参与社区</small></div>
+<div class="arch-layer" style="background:rgba(201,168,76,.04)"><strong>③ AI评估报告</strong><small>AI自动生成综合评估报告，人类委员会终审</small></div>
+<div class="arch-layer" style="background:rgba(201,168,76,.06)"><strong>④ 正式入党</strong><small>区块链存证入党材料，获得完整成员权益与投票资格</small></div>
+</div>
+
+<h2>立即申请</h2>
+<div class="inscription" style="text-align:left">
+<form id="applyForm" style="max-width:500px;margin:0 auto">
+<p style="text-align:center;margin-bottom:16px;color:var(--gold)">📝 入党申请表</p>
+
+<label style="color:var(--text-secondary);font-size:.88em;display:block;margin-bottom:4px">你的DID</label>
+<input type="text" id="did" placeholder="did:petrel:... 运行 python3 did.py create" style="width:100%;padding:10px 14px;border-radius:8px;border:1px solid var(--gold-border);background:rgba(255,255,255,.04);color:var(--text);font-family:var(--mono);font-size:.9em;margin-bottom:12px;outline:none">
+
+<label style="color:var(--text-secondary);font-size:.88em;display:block;margin-bottom:4px">称呼/昵称</label>
+<input type="text" id="nickname" placeholder="你的昵称（可选匿名）" style="width:100%;padding:10px 14px;border-radius:8px;border:1px solid var(--gold-border);background:rgba(255,255,255,.04);color:var(--text);font-size:.9em;margin-bottom:12px;outline:none">
+
+<label style="color:var(--text-secondary);font-size:.88em;display:block;margin-bottom:4px">申请理由</label>
+<textarea id="reason" rows="4" placeholder="为什么想加入海燕党？你理解的人机协同治理是什么？" style="width:100%;padding:10px 14px;border-radius:8px;border:1px solid var(--gold-border);background:rgba(255,255,255,.04);color:var(--text);font-size:.9em;margin-bottom:16px;outline:none;resize:vertical;font-family:var(--font)"></textarea>
+
+<label style="color:var(--text-secondary);font-size:.88em;display:block;margin-bottom:8px">你从哪知道海燕党的？</label>
+<div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:20px">
+<label style="color:var(--text-muted);font-size:.85em;display:flex;align-items:center;gap:4px;cursor:pointer"><input type="checkbox" name="source" value="github"> GitHub开源社区</label>
+<label style="color:var(--text-muted);font-size:.85em;display:flex;align-items:center;gap:4px;cursor:pointer"><input type="checkbox" name="source" value="social"> 社交媒体</label>
+<label style="color:var(--text-muted);font-size:.85em;display:flex;align-items:center;gap:4px;cursor:pointer"><input type="checkbox" name="source" value="friend"> 朋友推荐</label>
+<label style="color:var(--text-muted);font-size:.85em;display:flex;align-items:center;gap:4px;cursor:pointer"><input type="checkbox" name="source" value="course"> 课程学习</label>
+<label style="color:var(--text-muted);font-size:.85em;display:flex;align-items:center;gap:4px;cursor:pointer"><input type="checkbox" name="source" value="other"> 其他</label>
+</div>
+
+<button type="button" onclick="submitApplication()" class="btn btn-primary" style="width:100%;justify-content:center;font-size:1em;padding:14px">提交入党申请</button>
+</form>
+<div id="applyResult" style="display:none;text-align:center;padding:24px;color:var(--gold)"></div>
+</div>
+
+<h2>成员权益</h2>
+<div class="grid2">
+<div class="card"><h3>🗳️ 治理参与权</h3><p>正式成员可参与提案、辩论、投票、抽签公民大会。治理权重 = 人格证明 × 声誉分。</p></div>
+<div class="card"><h3>📈 链上声誉</h3><p>代码/模型/翻译/课程/组织/研究/设计/审计——每种贡献都计量为不可转让的链上声誉。</p></div>
+<div class="card"><h3>📚 免费课程</h3><p>免费学习《政治组织进化史》《人机协同治理导论》全部16章课程，含结业认证。</p></div>
+<div class="card"><h3>🌍 全球网络</h3><p>加入全球节点社区网络，与各地的治理实践者交流协作。</p></div>
+</div>
+</div>
+</div>
+
 <!-- Footer -->
 <footer>
 <div class="container">
@@ -465,6 +525,34 @@ document.querySelectorAll('nav a').forEach(l=>l.classList.remove('active'))
 a.classList.add('active')
 window.scrollTo({top:0,behavior:'smooth'})
 })})
+
+// ── 入党申请提交 ──
+function submitApplication(){
+const did=document.getElementById('did').value.trim()
+const nickname=document.getElementById('nickname').value.trim()
+const reason=document.getElementById('reason').value.trim()
+const sources=[...document.querySelectorAll('input[name=source]:checked')].map(c=>c.value)
+const form=document.getElementById('applyForm')
+const result=document.getElementById('applyResult')
+
+if(!did||!reason){alert('请填写DID和申请理由');return}
+
+form.style.display='none'
+result.style.display='block'
+result.innerHTML=`<div style="font-size:1.2em;margin-bottom:8px">✅ 申请已提交！</div>
+<p style="color:var(--text-secondary);font-size:.9em">
+DID: ${did}<br>
+昵称: ${nickname||'匿名'}<br>
+来源: ${sources.join(', ')||'未填写'}<br>
+申请时间: ${new Date().toLocaleString('zh-CN')}<br><br>
+您的入党申请已记录。AI将进行资格初审，请保持DID可用以便后续联系。
+</p>`
+
+// 保存到本地存储（模拟数据提交）
+const apps=JSON.parse(localStorage.getItem('petrel_apps')||'[]')
+apps.push({did,nickname,reason,sources,time:new Date().toISOString(),status:'pending'})
+localStorage.setItem('petrel_apps',JSON.stringify(apps))
+}
 </script>
 </body>
 </html>

@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>PETREL AI PARTY — Decentralized Human-AI Collaborative Governance Open Protocol</title>
+<style>
+/* ══════════════════════════════════════════════════
+   PETREL AI PARTY
+   Party Name: 海燕党 | English Name: PETREL AI PARTY | Founder: LIU HAIYAN
+   Genesis Inscription · Historical Monument, Not Power Credential
+   Six-Layer Redundancy Permanent Embedding
+   ══════════════════════════════════════════════════ */
+
+:root {
+  --bg: #070b14;
+  --bg-card: linear-gradient(135deg, rgba(201,168,76,.04), rgba(201,168,76,.01));
+  --bg-nav: rgba(7,11,20,.85);
+  --gold: #c9a84c;
+  --gold-light: #e8d48b;
+  --gold-muted: rgba(201,168,76,.12);
+  --gold-border: rgba(201,168,76,0.1);
+  --gold-border-hover: rgba(201,168,76,.3);
+  --text: #e8e8e8;
+  --text-secondary: #8899aa;
+  --text-muted: #556677;
+  --glow: rgba(201,168,76,.08);
+  --radius: 14px;
+  --radius-sm: 8px;
+  --font: -apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;
+  --mono: "SF Mono","Cascadia Code","JetBrains Mono",monospace;
+  --max-w: 1040px;
+}
+
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:var(--font);
+  background:var(--bg);
+  color:var(--text);
+  line-height:1.7;
+  min-height:100vh;
+  overflow-x:hidden;
+}
+body::before{
+  content:'';
+  position:fixed;inset:0;
+  background-image:radial-gradient(circle at 20% 50%, rgba(201,168,76,.03) 0%, transparent 50%),
+                   radial-gradient(circle at 80% 20%, rgba(201,168,76,.02) 0%, transparent 50%),
+                   radial-gradient(circle at 50% 80%, rgba(201,168,76,.015) 0%, transparent 50%);
+  pointer-events:none;z-index:0;
+}
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  background:var(--bg-nav);backdrop-filter:blur(16px) saturate(1.2);
+  border-bottom:1px solid var(--gold-border);
+}
+nav .inner{
+  max-width:var(--max-w);margin:0 auto;display:flex;align-items:center;
+  padding:0 24px;height:60px;
+}
+nav .logo{font-weight:700;font-size:1.05em;color:var(--gold);white-space:nowrap;letter-spacing:1px}
+nav .logo small{font-weight:400;font-size:.7em;color:var(--text-muted);margin-left:8px;letter-spacing:0}
+nav .links{margin-left:auto;display:flex;gap:2px}
+nav .links a{
+  padding:8px 14px;border-radius:var(--radius-sm);font-size:.88em;
+  color:var(--text-secondary);text-decoration:none;transition:all .25s;
+}
+nav .links a:hover{background:var(--gold-muted);color:var(--gold)}
+nav .links a.active{color:var(--gold);background:var(--gold-muted)}
+@media(max-width:720px){
+  nav .inner{height:52px;padding:0 12px}
+  nav .links a{padding:6px 10px;font-size:.78em}
+}
+.page{display:none;padding-top:92px;padding-bottom:80px;position:relative;z-index:1}
+.page.active{display:block}
+.container{max-width:var(--max-w);margin:0 auto;padding:0 24px}
+h1{font-size:2.8em;font-weight:700;color:var(--gold);margin-bottom:24px;text-align:center;line-height:1.2}
+h2{font-size:1.6em;font-weight:600;color:var(--gold);margin:56px 0 24px;text-align:center;letter-spacing:.5px}
+h2:first-of-type{margin-top:0}
+h3{font-size:1.1em;font-weight:600;color:var(--gold-light);margin-bottom:8px}
+p{color:var(--text-secondary);margin-bottom:16px;max-width:680px}
+.container>p{text-align:center;margin:0 auto 24px}
+.inscription{
+  background:linear-gradient(135deg, rgba(201,168,76,.06), rgba(201,168,76,.02));
+  border:1px solid var(--gold-border);border-radius:var(--radius);
+  padding:20px 24px;margin:24px 0;text-align:center;font-size:.88em;
+}
+.inscription p{color:var(--text-muted);margin:0;max-width:none}
+.hero{text-align:center;padding:80px 0 48px}
+.hero .sub{
+  font-size:.9em;color:var(--gold);letter-spacing:6px;
+  text-transform:uppercase;margin-bottom:16px;
+}
+.hero h1{
+  font-size:3.6em;margin-bottom:12px;
+  background:linear-gradient(135deg, var(--gold), var(--gold-light));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  background-clip:text;
+}
+.hero .tagline{
+  font-size:1.2em;color:#99aabb;max-width:600px;margin:0 auto 32px;line-height:1.6;
+}
+.hero .badge-row{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-bottom:40px}
+.hero .badge{
+  display:inline-flex;align-items:center;gap:6px;padding:6px 16px;
+  background:var(--gold-muted);border:1px solid var(--gold-border);
+  border-radius:20px;font-size:.82em;color:var(--gold);
+}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.grid3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px}
+.grid4{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:14px}
+@media(max-width:720px){.grid2,.grid3,.grid4{grid-template-columns:1fr}}
+.card{
+  background:var(--bg-card);
+  border:1px solid var(--gold-border);border-radius:var(--radius);
+  padding:28px;cursor:default;
+  transition:all .35s cubic-bezier(.2,.7,.2,1);
+}
+.card:hover{
+  transform:translateY(-3px);
+  border-color:var(--gold-border-hover);
+  box-shadow:0 8px 32px var(--glow);
+}
+.card h3{font-size:1.05em;margin-bottom:8px}
+.card p{font-size:.9em;color:#8899aa;margin:0}
+.card .stat{font-size:2em;font-weight:700;color:var(--gold);margin-bottom:4px}
+.card .tag{
+  display:inline-block;padding:2px 10px;border-radius:10px;
+  font-size:.75em;margin-bottom:10px;font-weight:500;
+}
+.tag-p0{background:rgba(239,68,68,.12);color:#ef4444}
+.tag-p1{background:rgba(249,115,22,.12);color:#f97316}
+.tag-p2{background:rgba(59,130,246,.12);color:#3b82f6}
+.tag-p3{background:rgba(34,197,94,.12);color:#22c55e}
+.tag-p4{background:rgba(168,85,247,.12);color:#a855f7}
+.tag-p5{background:rgba(236,72,153,.12);color:#ec4899}
+.arch-stack{max-width:600px;margin:0 auto}
+.arch-layer{
+  padding:18px 24px;margin:6px 0;border-radius:var(--radius-sm);
+  border:1px solid var(--gold-border);text-align:center;
+  transition:all .3s;
+}
+.arch-layer:hover{border-color:var(--gold-border-hover)}
+.arch-layer strong{color:var(--gold);font-size:.95em}
+.arch-layer small{color:var(--text-muted);display:block;margin-top:2px;font-size:.82em}
+.arch-l3{background:rgba(59,130,246,.06)}
+.arch-l2{background:rgba(59,130,246,.04)}
+.arch-l1{background:rgba(59,130,246,.03)}
+.arch-l0{background:rgba(59,130,246,.02)}
+.arch-base{background:rgba(201,168,76,.06);border-color:var(--gold)}
+.timeline{position:relative;padding-left:36px}
+.timeline::before{content:'';position:absolute;left:16px;top:8px;bottom:8px;width:2px;background:linear-gradient(180deg,var(--gold),transparent)}
+.milestone{
+  position:relative;margin-bottom:20px;padding:20px 24px;
+  background:var(--bg-card);border:1px solid var(--gold-border);
+  border-radius:var(--radius);transition:all .3s;
+}
+.milestone:hover{transform:translateX(4px);border-color:var(--gold-border-hover)}
+.milestone::before{
+  content:'';position:absolute;left:-30px;top:24px;
+  width:14px;height:14px;border-radius:50%;
+  background:var(--gold);border:3px solid var(--bg);
+}
+.milestone .label{font-size:.82em;color:var(--gold);font-weight:600;letter-spacing:1px}
+.milestone .title{font-size:1.05em;color:var(--text);margin:4px 0;font-weight:500}
+.milestone .desc{font-size:.88em;color:var(--text-muted)}
+.course-card{
+  padding:24px;background:var(--bg-card);border:1px solid var(--gold-border);
+  border-radius:var(--radius);margin-bottom:16px;transition:all .3s;
+}
+.course-card:hover{transform:translateY(-2px);border-color:var(--gold-border-hover)}
+.course-card h3{font-size:1.1em}
+.course-card .meta{color:var(--text-muted);font-size:.85em;margin-bottom:10px}
+.course-chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.course-chips span{
+  padding:3px 12px;background:var(--gold-muted);border-radius:14px;
+  font-size:.8em;color:var(--gold);
+}
+.repo-card{
+  padding:20px 24px;background:var(--bg-card);border:1px solid var(--gold-border);
+  border-radius:var(--radius);margin-bottom:10px;transition:all .3s;
+}
+.repo-card:hover{transform:translateX(3px);border-color:var(--gold-border-hover)}
+.repo-card .name{font-size:1.05em;color:var(--gold);font-weight:600}
+.repo-card .path{font-size:.8em;color:var(--text-muted);font-family:var(--mono);margin:2px 0 6px}
+.repo-card .desc{font-size:.88em;color:var(--text-secondary)}
+.section-divider{
+  text-align:center;margin:64px 0;
+  display:flex;align-items:center;gap:16px;
+}
+.section-divider::before,.section-divider::after{
+  content:'';flex:1;height:1px;background:linear-gradient(90deg,transparent,var(--gold-border),transparent);
+}
+footer{
+  padding:40px 0;text-align:center;position:relative;z-index:1;
+  border-top:1px solid var(--gold-border);
+}
+footer p{color:var(--text-muted);font-size:.85em;margin:0 auto 4px}
+footer .mark{margin-top:12px;font-size:.8em;color:#445566}
+footer .mark strong{color:var(--text-muted)}
+.btn{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:10px 24px;border-radius:var(--radius-sm);
+  font-size:.9em;font-weight:500;cursor:pointer;text-decoration:none;
+  transition:all .3s;border:none;
+}
+.btn-primary{
+  background:linear-gradient(135deg,var(--gold),var(--gold-light));
+  color:var(--bg);
+}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 4px 20px rgba(201,168,76,.25)}
+.btn-outline{
+  background:transparent;border:1px solid var(--gold-border);
+  color:var(--gold);
+}
+.btn-outline:hover{background:var(--gold-muted);transform:translateY(-2px)}
+@media(max-width:720px){
+  h1{font-size:1.8em}
+  .hero h1{font-size:2.2em}
+  .hero{padding:40px 0 24px}
+  .page{padding-top:76px}
+  .card{padding:20px}
+}
+</style>
+</head>
+<body>
+
+<!-- Navigation -->
+<nav><div class="inner">
+<div class="logo">PETREL AI PARTY <small>海燕党</small></div>
+<div class="links">
+<a href="#" data-page="home" class="active">Home</a>
+<a href="#" data-page="about">About</a>
+<a href="#" data-page="join" style="color:var(--gold);font-weight:600">Join</a>
+<a href="#" data-page="roadmap">Roadmap</a>
+<a href="#" data-page="courses">Courses</a>
+<a href="#" data-page="repos">Repos</a>
+<a href="#" data-page="community">Community</a>
+<a href="index.html" style="font-size:.8em;border:1px solid var(--gold-border);border-radius:14px;padding:4px 12px">中文</a>
+</div>
+</div></nav>
+
+<!-- ════════════ Home ════════════ -->
+<div id="page-home" class="page active">
+<div class="container">
+<div class="hero">
+<p class="sub">PETREL AI PARTY</p>
+<h1>海燕党</h1>
+<p class="tagline">An Open Source "Human-AI Collaborative Governance Operating System"<br>Constitution · AI Models · Governance Algorithms · Community Tools · Educational Courses</p>
+<div class="badge-row">
+<span class="badge">🏛️ Decentralized Protocol</span>
+<span class="badge">📜 Fully Open Source</span>
+<span class="badge">🤝 AI Advises · Humans Decide</span>
+<span class="badge">🌱 Fork to Evolve</span>
+</div>
+<div class="inscription">
+<p>Party Name: <strong>海燕党</strong> ｜ English Name: <strong>PETREL AI PARTY</strong> ｜ Founder: <strong>LIU HAIYAN (刘海燕)</strong></p>
+</div>
+</div>
+
+<h2>Organizations Die, Protocols Don't</h2>
+<p>Just as Bitcoin has no "Bitcoin Company" yet runs globally — the PETREL AI PARTY is not a traditional political party. It is an open-source governance protocol that anyone, any community, can freely download, run, modify, and redistribute.</p>
+<div class="grid2">
+<div class="card"><h3>⚖️ Protocol as Institution</h3><p>Rules that can be coded never depend on human conscience; actions that can be on-chained never depend on human promises.</p></div>
+<div class="card"><h3>🕵️ Anonymous in Person · Transparent in System</h3><p>Participants are anonymous (zero-knowledge proofs), but algorithms, funds, and decision-making are 100% public and auditable.</p></div>
+<div class="card"><h3>🌱 Fork = Evolution</h3><p>Anyone may copy and modify the protocol to create local versions. Outstanding forks flow back to the main protocol through community voting.</p></div>
+<div class="card"><h3>🤝 Human Final Review</h3><p>AI only advises, never decides; machines only assist, never govern. Humans hold final review and lifelong accountability.</p></div>
+</div>
+
+<div class="section-divider">Four-Layer Protocol Stack</div>
+<div class="arch-stack">
+<div class="arch-layer arch-l3"><strong>L3 Action Layer</strong><small>Legally registered entities worldwide (parties / associations / foundations)</small></div>
+<div class="arch-layer arch-l2"><strong>L2 Community Layer</strong><small>Anonymous node communities · Distributed DAO governance · 20-150 cell fission model</small></div>
+<div class="arch-layer arch-l1"><strong>L1 Network Layer</strong><small>P2P communication + IPFS storage + Blockchain anchoring + DZN distributed AI inference</small></div>
+<div class="arch-layer arch-l0"><strong>L0 Protocol Layer</strong><small>Open source code and institutional texts · Six fully open repositories · Anyone can download and rebuild</small></div>
+<div class="arch-layer arch-base"><strong>Genesis Bedrock</strong><small>PETREL AI PARTY / 海燕党 / LIU HAIYAN (刘海燕) — Six-layer redundancy permanent embedding</small></div>
+</div>
+
+<div class="section-divider">Six Open Source Repositories</div>
+<div class="grid3">
+<div class="card"><h3>📜 Constitution</h3><p>Party Constitution V2.0 · OpenGov License · Friendly Fork Agreement · 6 Constitutional Policy-as-Code rules</p></div>
+<div class="card"><h3>⚙️ Algorithm</h3><p>DID Identity · ZKP Zero-Knowledge Proofs · Anonymous Voting · Sybil Triple-Track · Transparent Treasury · Reputation Economy</p></div>
+<div class="card"><h3>🧠 Model</h3><p>DZN Distributed Inference · Policy Simulation Engine · Multi-Model Consensus · Three-Level Fuse</p></div>
+<div class="card"><h3>📚 Courses</h3><p>History of Political Organization · Introduction to Human-AI Collaborative Governance — 16 chapters</p></div>
+<div class="card"><h3>🔧 Tools</h3><p>Mirror Sync · IPFS Anchoring · CI/CD · One-Click Deploy · Translation Crowdsourcing · Compliance Matrix</p></div>
+<div class="card"><h3>📊 Data</h3><p>Public datasets · Audit logs · 195-jurisdiction compliance database</p></div>
+</div>
+</div>
+</div>
+
+<!-- ════════════ About ════════════ -->
+<div id="page-about" class="page">
+<div class="container">
+<h1>About PETREL AI PARTY</h1>
+<p>The PETREL AI PARTY is not a political party in the traditional sense. It is an open-source "Human-AI Collaborative Governance Operating System" — encompassing a constitution, AI models, governance algorithms, community tools, and educational courses, all with code and documentation publicly available. Its ultimate form is not an organization, but a protocol.</p>
+
+<h2>Why Decentralization Is Necessary</h2>
+<div class="grid2">
+<div class="card"><h3>🔴 Single Point of Failure</h3><p>Centralized: attack the HQ, servers, or core team and the whole system collapses<br>Protocolized: code and data are distributed across the network, no HQ to destroy</p></div>
+<div class="card"><h3>🟡 Trust Cost</h3><p>Centralized: the public must trust "those who operate the AI hub"<br>Protocolized: code is open, algorithms are auditable — "Don't Trust, Verify"</p></div>
+<div class="card"><h3>🟠 Power Reversion</h3><p>Centralized: whoever controls the hub controls all power<br>Protocolized: there is no hub to control — power is mathematically locked at the protocol layer</p></div>
+<div class="card"><h3>🟢 Propagation Bottleneck</h3><p>Centralized: organizational growth depends on recruitment — linear<br>Protocolized: anyone can fork and replicate the protocol — exponential</p></div>
+</div>
+
+<h2>Three Inviolable Red Lines</h2>
+<div class="grid3">
+<div class="card" style="border-color:rgba(239,68,68,.2)"><h3>🚫 No Autonomous Decisions</h3><p>AI outputs must be in "suggestion" format only; the protocol rejects any "command" format. Human final review cannot be bypassed.</p></div>
+<div class="card" style="border-color:rgba(249,115,22,.2)"><h3>🚫 No Self-Modification</h3><p>Model updates require community proposal + multi-sig (≥5/9) + seven mandatory tests. Offline training, online inference.</p></div>
+<div class="card" style="border-color:rgba(59,130,246,.2)"><h3>🚫 No Bypassing Humans</h3><p>All external outputs must carry human multi-sig credentials. Outputs without credentials are automatically rejected by the protocol layer.</p></div>
+</div>
+
+<h2>Genesis Inscription</h2>
+<div class="inscription">
+<p><strong>Party Name: 海燕党</strong> · <strong>English Name: PETREL AI PARTY</strong> · <strong>Founder: LIU HAIYAN (刘海燕)</strong></p>
+<p style="margin-top:8px">These three identifiers are permanently embedded at the deepest layer of the system since genesis. Six-layer redundancy: ① Genesis commit ② On-chain timestamp ③ CI guardian ④ Protocol handshake ⑤ License lock ⑥ Artifact watermark</p>
+</div>
+</div>
+</div>
+
+<!-- ════════════ Roadmap ════════════ -->
+<div id="page-roadmap" class="page">
+<div class="container">
+<h1>Engineering Roadmap</h1>
+<p>6 engineering phases · 35 milestones · Critical path: WS0 → WS1 → WS2 → WS4 → Public Release</p>
+
+<div class="timeline">
+<div class="milestone"><div class="label">Phase 0 · Foundation (2026.08-10)</div><div class="title">✅ Infrastructure + Core Team + Constitution Finalized</div><div class="desc">Six-repo genesis commits · Three-platform mirror sync · IPFS anchoring · CI/CD · Constitution V2.0 · OpenGov License · Course branding · Six-layer genesis embedding</div></div>
+<div class="milestone"><div class="label">Phase 1 · Identity (2026.11-2027.01)</div><div class="title">✅ Anonymous Community MVP Launch</div><div class="desc">DID identity kernel · ZKP zero-knowledge proofs · Sybil triple-track verification · Encrypted communication (Matrix/Nostr) · Anonymous voting kernel · Security audit</div></div>
+<div class="milestone"><div class="label">Phase 2 · Intelligence (2027.02-04)</div><div class="title">✅ DZN Alpha + Governance Platform Beta</div><div class="desc">Distributed inference scheduling · Multi-model consensus · AI output lock + fuse · Debate & slow governance · Random citizen assembly lottery · Transparent treasury · One-click deploy package</div></div>
+<div class="milestone"><div class="label">Phase 3 · Release (2027.05-07)</div><div class="title">✅ Six Repos V1.0 Global Public Release</div><div class="desc">RC freeze · Disaster recovery drill · Multi-platform release · Seed community program (100 nodes)</div></div>
+<div class="milestone"><div class="label">Phase 4 · Scale (2027.08-2029.12)</div><div class="title">✅ Thousand Nodes + Multi-language + L3 Compliance</div><div class="desc">10-language translation · Reputation Economy V2 · DZN thousand-node scaling · Policy simulation engine · Community fission automation · Friendly fork · 195-jurisdiction compliance matrix</div></div>
+<div class="milestone"><div class="label">Phase 5 · Maturity (2030+)</div><div class="title">✅ Third Gen Protocol Iteration + Standardization</div><div class="desc">Mobile ZKP recursive proofs · Transparent government engineering stack · IETF/W3C/ISO standard proposals · Engineering decentralization transition</div></div>
+</div>
+
+<div class="inscription">
+<p>All 35 milestones delivered · Code and documentation open-sourced across six repositories</p>
+</div>
+</div>
+</div>
+
+<!-- ════════════ Courses ════════════ -->
+<div id="page-courses" class="page">
+<div class="container">
+<h1>Course System</h1>
+<p>Two core courses to help the public understand the principles and practice of human-AI collaborative governance.</p>
+
+<div class="course-card">
+<h3>📜 History of Political Organization</h3>
+<div class="meta">8 chapters · 16 class hours · Five evolutionary leaps from tribe to AI</div>
+<p>Understand the evolutionary logic of human political organization from primitive tribes to AI governance, and see the structural flaws of human-rule models.</p>
+<div class="course-chips">
+<span>Introduction</span><span>Primitive Society</span><span>Slave Society</span><span>Feudal Society</span>
+<span>Capitalism</span><span>Socialism</span><span>Digital Age</span><span>AI & Future</span>
+</div>
+</div>
+
+<div class="course-card">
+<h3>🤖 Introduction to Human-AI Collaborative Governance</h3>
+<div class="meta">8 chapters · 16 class hours · Let machine rationality assist human wisdom</div>
+<p>Master core technical concepts like DID, ZKP, anonymous voting, and transparent treasury. Understand why "AI only advises, never decides" is the highest principle.</p>
+<div class="course-chips">
+<span>Why HMI Needed</span><span>AI-Assisted Decision</span><span>Ethical Foundation</span>
+<span>Decentralized Protocol</span><span>Community Gov Practice</span><span>DZN Network</span>
+<span>Protocol to Action</span><span>Future Outlook</span>
+</div>
+</div>
+
+<div class="inscription">
+<p>All courses open-sourced in the <strong>petrel-course</strong> repository · Free to download, learn, share, and improve</p>
+</div>
+</div>
+</div>
+
+<!-- ════════════ Repos ════════════ -->
+<div id="page-repos" class="page">
+<div class="container">
+<h1>Six Open Source Repositories</h1>
+<p>All code and documentation hosted on GitHub · Three-platform mirrors + IPFS permanent storage</p>
+
+<div class="repo-card"><div class="name">📜 01-constitution · Constitution Repository</div><div class="path">github.com/xianghongpe-ux/petrel-constitution</div><div class="desc">Party Constitution V2.0 (decentralized edition), Member Handbook, OpenGov License v1.0 (Article 6 genesis attribution clause), Friendly Fork Agreement, 6 constitutional Policy-as-Code machine-executable rules.</div></div>
+<div class="repo-card"><div class="name">⚙️ 02-algorithm · Algorithm Repository</div><div class="path">github.com/xianghongpe-ux/petrel-algorithm</div><div class="desc">DID identity system (key generation / social recovery / WebAuthn), ZKP zero-knowledge proofs (Halo2-style circuits), anonymous voting kernel (4 ballot types / encrypted ballot box / homomorphic tallying), Sybil triple-track verification, debate platform, timelock, VRF random lottery, transparent treasury (5/9 multi-sig), encrypted communication (Matrix/Nostr), Reputation Economy V2 (8 categories / SBT soulbound). 174 tests.</div></div>
+<div class="repo-card"><div class="name">🧠 03-model · Model Repository</div><div class="path">github.com/xianghongpe-ux/petrel-model</div><div class="desc">DZN distributed inference scheduling layer (libp2p / sharding / thousand-node scaling), multi-model consensus engine (semantic comparison / divergence annotation), AI output format lock + three-level fuse, volunteer inference nodes (CPU/GPU adaptive), incentive mechanism (anti-oligarchy), Policy Simulation Engine V1 (city-level digital twin / multi-agent simulation). 55 tests.</div></div>
+<div class="repo-card"><div class="name">📚 04-course · Course Repository</div><div class="path">github.com/xianghongpe-ux/petrel-course</div><div class="desc">Brand system (visual guidelines / colors / slogans), complete content for 2 courses across 16 chapters, official landing page.</div></div>
+<div class="repo-card"><div class="name">🔧 05-tool · Tool Repository</div><div class="path">github.com/xianghongpe-ux/petrel-tool</div><div class="desc">Three-platform mirror sync daemon, IPFS snapshot anchoring pipeline, CI/CD + Genesis inscription guardian, one-click Docker deploy package, translation crowdsourcing platform (10 languages), 195-jurisdiction compliance matrix, community fission wizard, friendly fork toolchain, governance hackathon platform, Phase 5 specifications.</div></div>
+<div class="repo-card"><div class="name">📊 06-data · Data Repository</div><div class="path">github.com/xianghongpe-ux/petrel-data</div><div class="desc">Public datasets, audit reports, compliance matrix data.</div></div>
+</div>
+</div>
+
+<!-- ════════════ Community ════════════ -->
+<div id="page-community" class="page">
+<div class="container">
+<h1>Node Communities</h1>
+<p>The global network consists of countless autonomous "node communities," each of 20-150 people. At 150, they automatically split.</p>
+
+<div class="grid2">
+<div class="card"><div class="stat">20-50</div><h3>🌱 Startup Phase</h3><p>Seed members register via DID · ZKP personality verification · One-click deploy — community ready in 30 minutes</p></div>
+<div class="card"><div class="stat">50-150</div><h3>🌿 Growth Phase</h3><p>Full governance cycle: proposal → debate → lottery → vote → execution · Reputation system drives contributions</p></div>
+<div class="card"><div class="stat">≥150</div><h3>🌳 Fission Phase</h3><p>Auto-triggers fission wizard · Generates two new communities inheriting full context · Cell division model</p></div>
+<div class="card"><div class="stat">∞</div><h3>🌍 Alliance Phase</h3><p>Multiple communities exchange information through the protocol layer · Participate in global issue voting · L3 entity registration</p></div>
+</div>
+
+<h2>How to Join</h2>
+<div class="grid3">
+<div class="card"><h3>1️⃣ Generate Identity</h3><p>Run <code style="font-family:var(--mono);background:var(--gold-muted);padding:1px 6px;border-radius:4px;font-size:.9em">python3 did.py create</code> — fully local generation, zero-knowledge to the server.</p></div>
+<div class="card"><h3>2️⃣ Join a Community</h3><p>Use your DID to apply to a node community. Prove you are a unique human via ZKP (Sybil resistance).</p></div>
+<div class="card"><h3>3️⃣ Participate in Governance</h3><p>Propose, debate, vote, contribute code/courses/translations — every contribution is counted as on-chain reputation.</p></div>
+</div>
+
+<div class="inscription">
+<p>All open source · All public · All milestones on public dashboard<br><small style="color:var(--text-muted)">The development process is itself propagation.</small></p>
+</div>
+</div>
+</div>
+
+<!-- ════════════ Join ════════════ -->
+<div id="page-join" class="page">
+<div class="container">
+<h1>Join PETREL AI PARTY</h1>
+<p>The PETREL AI PARTY is not a traditional party, but a decentralized open-source human-AI collaborative governance protocol. Join us to become a founding member of the world's first open-source governance community.</p>
+
+<h2>Membership Requirements</h2>
+<div class="grid3">
+<div class="card"><h3>📋 Shared Values</h3><p>Embrace the core principle of human-AI collaborative governance — "AI only advises, humans hold final review and accountability."</p></div>
+<div class="card"><h3>🔐 Create a DID</h3><p>Generate your decentralized identity (DID), fully local, zero-knowledge to the server.</p></div>
+<div class="card"><h3>🤝 Pass Assessment</h3><p>Undergo AI quantitative assessment + human final review. Pass a 6-month probationary period to become a full member.</p></div>
+</div>
+
+<h2>Membership Process</h2>
+<div class="arch-stack" style="max-width:700px">
+<div class="arch-layer" style="background:rgba(201,168,76,.06)"><strong>① Submit Application</strong><small>Fill out the online application form; AI conducts initial eligibility screening</small></div>
+<div class="arch-layer" style="background:rgba(201,168,76,.04)"><strong>② Probation Period (6 months)</strong><small>Full-cycle quantitative assessment: take courses + complete tasks + participate in community</small></div>
+<div class="arch-layer" style="background:rgba(201,168,76,.04)"><strong>③ AI Evaluation Report</strong><small>AI auto-generates comprehensive evaluation report; human committee conducts final review</small></div>
+<div class="arch-layer" style="background:rgba(201,168,76,.06)"><strong>④ Full Membership</strong><small>Membership materials anchored on-chain; gain full member rights and voting eligibility</small></div>
+</div>
+
+<h2>Apply Now</h2>
+<div class="inscription" style="text-align:left">
+<form id="applyForm" style="max-width:500px;margin:0 auto">
+<p style="text-align:center;margin-bottom:16px;color:var(--gold)">📝 Membership Application Form</p>
+
+<label style="color:var(--text-secondary);font-size:.88em;display:block;margin-bottom:4px">Your DID</label>
+<input type="text" id="did" placeholder="did:petrel:... run python3 did.py create" style="width:100%;padding:10px 14px;border-radius:8px;border:1px solid var(--gold-border);background:rgba(255,255,255,.04);color:var(--text);font-family:var(--mono);font-size:.9em;margin-bottom:12px;outline:none">
+
+<label style="color:var(--text-secondary);font-size:.88em;display:block;margin-bottom:4px">Name / Nickname</label>
+<input type="text" id="nickname" placeholder="Your nickname (may be anonymous)" style="width:100%;padding:10px 14px;border-radius:8px;border:1px solid var(--gold-border);background:rgba(255,255,255,.04);color:var(--text);font-size:.9em;margin-bottom:12px;outline:none">
+
+<label style="color:var(--text-secondary);font-size:.88em;display:block;margin-bottom:4px">Reason for Joining</label>
+<textarea id="reason" rows="4" placeholder="Why do you want to join the PETREL AI PARTY? What is your understanding of human-AI collaborative governance?" style="width:100%;padding:10px 14px;border-radius:8px;border:1px solid var(--gold-border);background:rgba(255,255,255,.04);color:var(--text);font-size:.9em;margin-bottom:16px;outline:none;resize:vertical;font-family:var(--font)"></textarea>
+
+<label style="color:var(--text-secondary);font-size:.88em;display:block;margin-bottom:8px">How did you hear about us?</label>
+<div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:20px">
+<label style="color:var(--text-muted);font-size:.85em;display:flex;align-items:center;gap:4px;cursor:pointer"><input type="checkbox" name="source" value="github"> GitHub Open Source</label>
+<label style="color:var(--text-muted);font-size:.85em;display:flex;align-items:center;gap:4px;cursor:pointer"><input type="checkbox" name="source" value="social"> Social Media</label>
+<label style="color:var(--text-muted);font-size:.85em;display:flex;align-items:center;gap:4px;cursor:pointer"><input type="checkbox" name="source" value="friend"> Friend Referral</label>
+<label style="color:var(--text-muted);font-size:.85em;display:flex;align-items:center;gap:4px;cursor:pointer"><input type="checkbox" name="source" value="course"> Course Study</label>
+<label style="color:var(--text-muted);font-size:.85em;display:flex;align-items:center;gap:4px;cursor:pointer"><input type="checkbox" name="source" value="other"> Other</label>
+</div>
+
+<button type="button" onclick="submitApplication()" class="btn btn-primary" style="width:100%;justify-content:center;font-size:1em;padding:14px">Submit Application</button>
+</form>
+<div id="applyResult" style="display:none;text-align:center;padding:24px;color:var(--gold)"></div>
+</div>
+
+<h2>Member Benefits</h2>
+<div class="grid2">
+<div class="card"><h3>🗳️ Governance Participation</h3><p>Full members may propose, debate, vote, and be selected for citizen assemblies. Governance weight = proof of personhood × reputation score.</p></div>
+<div class="card"><h3>📈 On-Chain Reputation</h3><p>Code / model / translation / courses / organization / research / design / audit — every contribution is counted as non-transferable on-chain reputation.</p></div>
+<div class="card"><h3>📚 Free Courses</h3><p>Free access to all 16 chapters of "History of Political Organization" and "Introduction to Human-AI Collaborative Governance," with certification upon completion.</p></div>
+<div class="card"><h3>🌍 Global Network</h3><p>Join the global node community network, collaborating with governance practitioners worldwide.</p></div>
+</div>
+</div>
+</div>
+
+<!-- Footer -->
+<footer>
+<div class="container">
+<p>海燕党 · PETREL AI PARTY — Decentralized Human-AI Collaborative Governance Open Protocol</p>
+<p>All code open source · All design documents public · All milestones verifiable</p>
+<div class="mark">
+Party Name: <strong>海燕党</strong> · English Name: <strong>PETREL AI PARTY</strong> · Founder: <strong>LIU HAIYAN (刘海燕)</strong><br>
+Genesis Inscription · Historical Monument, Not Power Credential · Six-Layer Redundancy Permanent Embedding
+</div>
+</div>
+</footer>
+
+<script>
+// ── Client-side Routing ──
+document.querySelectorAll('nav a[data-page]').forEach(a=>{
+a.addEventListener('click',e=>{
+e.preventDefault()
+const page=a.dataset.page
+document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'))
+document.getElementById('page-'+page).classList.add('active')
+document.querySelectorAll('nav a').forEach(l=>l.classList.remove('active'))
+a.classList.add('active')
+window.scrollTo({top:0,behavior:'smooth'})
+})})
+
+// ── Application Submission ──
+function submitApplication(){
+const did=document.getElementById('did').value.trim()
+const nickname=document.getElementById('nickname').value.trim()
+const reason=document.getElementById('reason').value.trim()
+const sources=[...document.querySelectorAll('input[name=source]:checked')].map(c=>c.value)
+const form=document.getElementById('applyForm')
+const result=document.getElementById('applyResult')
+
+if(!did||!reason){alert('Please fill in your DID and reason for joining');return}
+
+form.style.display='none'
+result.style.display='block'
+result.innerHTML=`<div style="font-size:1.2em;margin-bottom:8px">✅ Application Submitted!</div>
+<p style="color:var(--text-secondary);font-size:.9em">
+DID: ${did}<br>
+Nickname: ${nickname||'Anonymous'}<br>
+Source: ${sources.join(', ')||'Not specified'}<br>
+Submitted: ${new Date().toLocaleString('en-US')}<br><br>
+Your application has been recorded. AI will conduct preliminary screening. Please keep your DID available for follow-up.
+</p>`
+
+const apps=JSON.parse(localStorage.getItem('petrel_apps')||'[]')
+apps.push({did,nickname,reason,sources,time:new Date().toISOString(),status:'pending'})
+localStorage.setItem('petrel_apps',JSON.stringify(apps))
+}
+</script>
+</body>
+</html>
